@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Editor
+.idea/
+.vscode/
+
+# Build outputs
+miui_proxy
+*.exe
+*.out
+
+# SQLite runtime files
+*.db
+*.db-shm
+*.db-wal
+
+# Logs and temp
+*.log
+tmp/
+dist/
+coverage.out

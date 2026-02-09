@@ -1,0 +1,41 @@
+name: Manual Go Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_tests:
+        description: "Run go test before build"
+        required: false
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Download modules
+        run: go mod download
+
+      - name: Run tests
+        if: ${{ github.event.inputs.run_tests == 'true' }}
+        run: go test ./...
+
+      - name: Build binary
+        run: go build -o miui_proxy .
+
+      - name: Upload binary artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: miui_proxy
+          path: miui_proxy
