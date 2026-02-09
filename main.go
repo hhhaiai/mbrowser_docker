@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	defaultPort = "8080"
+	defaultPort   = "8080"
 	defaultDBPath = "./miui.db"
 )
 
@@ -36,6 +36,7 @@ func main() {
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/health", methodOnly(http.MethodGet, server.handleHealth))
+	mux.HandleFunc("/v1/models", methodOnly(http.MethodGet, server.handleModels))
 	mux.HandleFunc("/v1/chat/completions", methodOnly(http.MethodPost, server.handleChatCompletions))
 	mux.HandleFunc("/v1/responses", methodOnly(http.MethodPost, server.handleResponses))
 	mux.HandleFunc("/v1/messages", methodOnly(http.MethodPost, server.handleClaudeMessages))

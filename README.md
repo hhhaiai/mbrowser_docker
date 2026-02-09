@@ -12,9 +12,10 @@ This service provides OpenAI `/v1/chat/completions`, OpenAI `/v1/responses`, and
 
 **Endpoints**
 1. `POST /v1/chat/completions`
-2. `POST /v1/responses`
-3. `POST /v1/messages`
-4. `GET /health`
+2. `GET /v1/models`
+3. `POST /v1/responses`
+4. `POST /v1/messages`
+5. `GET /health`
 
 **Headers**
 1. `Authorization: Bearer <token>` or any string

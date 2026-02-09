@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Added
+- OpenAI-compatible `GET /v1/models` endpoint that returns the single available model (`DOUBAO`) in standard list format.
+
 ## [0.1.0] - 2026-02-09
 
 ### Added

@@ -31,6 +31,20 @@ func (s *Server) handleHealth(w http.ResponseWriter, r *http.Request) {
 	_, _ = w.Write([]byte(`{"status":"ok"}`))
 }
 
+func (s *Server) handleModels(w http.ResponseWriter, r *http.Request) {
+	writeJSON(w, map[string]interface{}{
+		"object": "list",
+		"data": []map[string]interface{}{
+			{
+				"id":       "DOUBAO",
+				"object":   "model",
+				"created":  time.Now().Unix(),
+				"owned_by": "miui",
+			},
+		},
+	})
+}
+
 func (s *Server) handleChatCompletions(w http.ResponseWriter, r *http.Request) {
 	body, err := readJSONBody(r)
 	if err != nil {
